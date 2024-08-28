@@ -13,24 +13,30 @@ html {
 body {
   font-family: "Cinzel Decorative", cursive;
   font-size: 2rem;
-  height: 100vh;
+  /* height: 100vh; */
   color: #222;
   background-color: #eabfb9;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 5rem;
 }
 
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 112rem;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
   gap: 4rem;
-  padding: 6rem 0;
+  padding: 5rem 0;
   border: 2px solid #222;
-  outline: 2px solid #222;
-  outline-offset: 1.2rem;
+  /* outline: 2px solid #222;  */
+  /* outline-offset: 1.2rem; */
+  flex-wrap: wrap;
+  border-radius: 5px;
 }
 
 h1 {
@@ -50,9 +56,10 @@ input {
   color: inherit;
   font-size: 2rem;
   background-color: #f0d2ce;
-  padding: 1.6rem 3.2rem;
+  padding: 1.5rem 1rem;
   border: none;
   width: 32rem;
+  border-radius: 12px;
 }
 
 input:focus {
@@ -63,7 +70,7 @@ input:focus {
   list-style: none;
   display: flex;
   gap: 2rem;
-
+  flex-wrap: wrap;
 }
 
 .day {
@@ -90,4 +97,88 @@ input:focus {
 .loader {
   font-size: 2.4rem;
   font-weight: 700;
+}
+
+@media only screen and (max-width: 1000px) {
+  .app {
+    width: 90%;
+    gap: 2rem;
+    padding: 6rem 0;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .app {
+    width: 90%;
+    gap: 2rem;
+    padding: 6rem 0;
+    border: none;
+  }
+  h1 {
+    font-weight: 600;
+    font-size: 4rem;
+    letter-spacing: 1.5px;
+    word-spacing: 4px;
+  }
+  input {
+    font-family: inherit;
+    color: inherit;
+    font-size: 2rem;
+    background-color: #f0d2ce;
+    padding: 1.2rem 1rem;
+    border: none;
+    width: 70vw;
+    border-radius: 12px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .app {
+    width: 90%;
+    gap: 2rem;
+    padding: 6rem 0;
+  }
+  h1 {
+    font-weight: 600;
+    font-size: 3.7rem;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+  }
+  input {
+    font-family: inherit;
+    color: inherit;
+    font-size: 2rem;
+    background-color: #f0d2ce;
+    padding: 1.2rem 1rem;
+    border: none;
+    width: 75vw;
+    border-radius: 12px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .app {
+    width: 95%;
+    gap: 2rem;
+    padding: 6rem 0;
+    border: none;
+  }
+  h1 {
+    font-weight: 600;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+  }
+  input {
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.8rem;
+    background-color: #f0d2ce;
+    padding: 1rem 1rem;
+    border: none;
+    width: 85vw;
+    border-radius: 12px;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 2.4rem;
+    font-size: 2.2rem;
+  }
 }

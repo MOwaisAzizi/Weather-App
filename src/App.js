@@ -38,12 +38,12 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [displayLocation, setDisplayLocation] = useState('')
   const [weather, setweather] = useState({})
-  
 
-  useEffect(function(){
+
+  useEffect(function () {
     async function fetchWather() {
-      if(location.length < 2) return setweather({});
-      
+      if (location.length < 2) return setweather({});
+
 
       try {
         // 1) Getting location (geocoding)
@@ -52,37 +52,38 @@ export default function App() {
           `https://geocoding-api.open-meteo.com/v1/search?name=${location}`
         );
         const geoData = await geoRes.json();
-          
-    //adding Loacation to local Storage
-    localStorage.setItem('location',location)
+
+
 
         if (!geoData.results) throw new Error("Location not found");
-  
+
         const { latitude, longitude, timezone, name, country_code } =
           geoData.results.at(0);
         setDisplayLocation(`${name} ${convertToFlag(country_code)}`);
-  
+
         // 2) Getting actual weather
         const weatherRes = await fetch(
           `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&timezone=${timezone}&daily=weathercode,temperature_2m_max,temperature_2m_min`
         );
         const weatherData = await weatherRes.json();
         setweather(weatherData.daily);
-      
+
       } catch (err) {
         console.log(err);
       } finally {
         setIsLoading(false)
+        //adding Loacation to local Storage
+        localStorage.setItem('location', location)
       }
-  
+
     }
     fetchWather()
-  
-  },[location])
 
-useEffect(function(){
-  setLocation(localStorage.getItem('location') || '')
-},[])
+  }, [location])
+
+  useEffect(function () {
+    setLocation(localStorage.getItem('location') || '')
+  }, [])
 
   const onchangeLoacation = e => setLocation(e.target.value)
 
@@ -124,7 +125,7 @@ function Weather({ weather, displayLocation }) {
 }
 
 function Day({ date, max, min, codes, isToday }) {
-  
+
   return (
     <li className="day">
       <span>{getWeatherIcon(codes)}</span>
