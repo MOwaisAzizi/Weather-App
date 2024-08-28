@@ -54,7 +54,6 @@ export default function App() {
         const geoData = await geoRes.json();
 
 
-
         if (!geoData.results) throw new Error("Location not found");
 
         const { latitude, longitude, timezone, name, country_code } =
@@ -73,7 +72,7 @@ export default function App() {
       } finally {
         setIsLoading(false)
         //adding Loacation to local Storage
-        localStorage.setItem('location', location)
+        // localStorage.setItem('location', location)
       }
 
     }
@@ -81,9 +80,9 @@ export default function App() {
 
   }, [location])
 
-  useEffect(function () {
-    setLocation(localStorage.getItem('location') || '')
-  }, [])
+  // useEffect(function () {
+  //   setLocation(localStorage.getItem('location') || '')
+  // }, [])
 
   const onchangeLoacation = e => setLocation(e.target.value)
 
