@@ -58,7 +58,7 @@ input {
   background-color: #f0d2ce;
   padding: 1.5rem 1rem;
   border: none;
-  width: 32rem;
+  width: 35rem;
   border-radius: 12px;
 }
 
@@ -71,6 +71,9 @@ input:focus {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+}
+.error{
+  font-weight: 600;
 }
 
 .day {

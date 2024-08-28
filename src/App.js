@@ -38,12 +38,13 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [displayLocation, setDisplayLocation] = useState('')
   const [weather, setweather] = useState({})
+  const [error,setError] = useState('')
 
 
   useEffect(function () {
     async function fetchWather() {
-      if (location.length < 2) return setweather({});
 
+      if (location.length < 2) return setweather({});
 
       try {
         // 1) Getting location (geocoding)
@@ -66,9 +67,9 @@ export default function App() {
         );
         const weatherData = await weatherRes.json();
         setweather(weatherData.daily);
-
+          setError('')
       } catch (err) {
-        console.log(err);
+        setError(err.message)
       } finally {
         setIsLoading(false)
         //adding Loacation to local Storage
@@ -86,16 +87,24 @@ export default function App() {
 
   const onchangeLoacation = e => setLocation(e.target.value)
 
-
   return (
     <div className="app">
-      <h1>Whater Classy</h1>
+      <h1>Weather Classy</h1>
       <Input location={location} onchangeLoacation={onchangeLoacation} />
 
       {/* <button onClick={fetchWather}>Git Data</button> */}
       {isLoading && <p className="isLoading">isLoading...</p>}
+      { error && <Error error = {error}/>}
 
       {weather.weathercode && <Weather weather={weather} displayLocation={displayLocation} />}
+    </div>
+  )
+}
+
+function Error({error}){
+  return(
+    <div>
+      <p className="error">{error}!</p>
     </div>
   )
 }
