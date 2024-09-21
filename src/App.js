@@ -57,8 +57,7 @@ export default function App() {
 
         if (!geoData.results) throw new Error("Location not found");
 
-        const { latitude, longitude, timezone, name, country_code } =
-          geoData.results.at(0);
+        const { latitude, longitude, timezone, name, country_code } = geoData.results.at(0);
         setDisplayLocation(`${name} ${convertToFlag(country_code)}`);
 
         // 2) Getting actual weather

@@ -32,7 +32,7 @@ body {
   margin: auto;
   gap: 4rem;
   padding: 5rem 0;
-  border: 2px solid #222;
+  /* border: 2px solid #222; */
   /* outline: 2px solid #222;  */
   /* outline-offset: 1.2rem; */
   flex-wrap: wrap;
