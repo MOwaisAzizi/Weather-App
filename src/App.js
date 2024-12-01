@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-
-
 function getWeatherIcon(wmoCode) {
   const icons = new Map([
     [[0], "☀️"],
@@ -35,11 +33,10 @@ function formatDay(dateStr) {
 
 export default function App() {
   const [location, setLocation] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [displayLocation, setDisplayLocation] = useState('')
   const [weather, setweather] = useState({})
+  const [displayLocation, setDisplayLocation] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const [error,setError] = useState('')
-
 
   useEffect(function () {
     async function fetchWather() {
@@ -71,18 +68,12 @@ export default function App() {
         setError(err.message)
       } finally {
         setIsLoading(false)
-        //adding Loacation to local Storage
-        // localStorage.setItem('location', location)
       }
 
     }
     fetchWather()
 
   }, [location])
-
-  // useEffect(function () {
-  //   setLocation(localStorage.getItem('location') || '')
-  // }, [])
 
   const onchangeLoacation = e => setLocation(e.target.value)
 
